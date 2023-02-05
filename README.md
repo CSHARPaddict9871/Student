@@ -1,8 +1,9 @@
 ﻿<p align="center">
-  <img src="https://user-images.githubusercontent.com/47704223/212773124-1baeff6b-c192-4c0a-b601-708205676ac2.png">
-</p> 
+  <img src="https://user-images.githubusercontent.com/123044890/216797134-513d57ac-6d75-480b-93e6-137b18d60b84.png">
+</p>
 
-# Students [![GitHub Latest Release)](https://img.shields.io/github/v/release/Antyss77/password-generator?logo=github)](https://github.com/Antyss77/password-generator/releases)   <img alt="GitHub issues" src="https://img.shields.io/github/issues/Antyss77/password-generator"> <img alt="Discord" src="https://img.shields.io/discord/741862512307339264"> 
+
+# Student [![GitHub Latest Release)](https://img.shields.io/github/v/release/Antyss77/password-generator?logo=github)](https://github.com/Antyss77/password-generator/releases)   <img alt="GitHub issues" src="https://img.shields.io/github/issues/Antyss77/password-generator"> <img alt="Discord" src="https://img.shields.io/discord/741862512307339264"> 
 
 First Project in C# w/ MrPid 
 
@@ -15,7 +16,7 @@ First Project in C# w/ MrPid
 **Compiling from source**
 
 ```
-git clone https://github.com/CSHARPaddict9871/Students.git
+git clone https://github.com/CSHARPaddict9871/Student.git
 cd password-generator/ 
 ```
 
