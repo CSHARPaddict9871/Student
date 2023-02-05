@@ -40,6 +40,23 @@ public partial class MainViewModel : ObservableObject
 
         set
         {
+
+
+            if (selectedStudent != null)
+            {
+                var t = new ObservableCollection<Student>();
+
+                foreach (var student in Students)
+                {
+                    if (student == selectedStudent)
+                        student.ShowDelete = false;
+
+                    t.Add(student);
+                }
+
+                Students = t;
+            }
+
             selectedStudent = value;
 
             var temp = new ObservableCollection<Student>();
@@ -67,7 +84,7 @@ public partial class MainViewModel : ObservableObject
 
     public MainViewModel()
     {
-        Students.Add(new Student() { FirstName = "John", LastName = "MacGyver", ShowDelete = true });
+        Students.Add(new Student() { FirstName = "John", LastName = "MacGyver", ShowDelete = false });
         Students.Add(new Student() { FirstName = "Jason", LastName = "Statham", ShowDelete = false });
         Students.Add(new Student() { FirstName = "Francis", LastName = "Ngannou", ShowDelete = false });
         SetTitle();

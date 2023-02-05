@@ -49,7 +49,8 @@
 										Padding="3"
 										FontSize="15"
 										IsVisible="{Binding ShowDelete}"
-										Foreground="White"										
+										Foreground="White"	
+										
 										>
 									
 								</Button>

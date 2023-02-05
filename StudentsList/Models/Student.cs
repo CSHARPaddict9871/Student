@@ -1,6 +1,8 @@
-﻿namespace StudentsList.DataModels
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace StudentsList.DataModels
 {
-    public class Student
+    public partial class Student : ObservableObject
     {
         // Backing Member
         private string firstName;
@@ -45,7 +47,8 @@
         /// </summary>
         public string FullName { get; set; }
 
-        public bool ShowDelete { get; set; }
+        [ObservableProperty]
+        private bool showDelete;
 
     }
 }
