@@ -33,11 +33,11 @@
             Grid.RowSpan="2"
             AnimationTime="0:0:0.1"
             Name="AddNewStudentPopup"
-            Open="True">
+            Open="{Binding AddNewStudentPopupIsOpen}">
 
 			<!--Open="{Binding AddNewStudentPopupIsOpen, Mode=TwoWay}"-->
 
-			<Border Width="100" Height="250" Background="Aqua">
+			<Border Width="100" Height="250" Background="Aqua" ZIndex="10">
 				<!--<TextBlock Foreground="Black" />-->
 			</Border>
 

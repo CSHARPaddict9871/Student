@@ -28,6 +28,11 @@ public partial class MainViewModel : ObservableObject
     /// </summary>
     public string DescriptionName { get; set; }
 
+    
+
+    [ObservableProperty]
+    private ObservableCollection<Student> students = new();
+
     /// <summary>
     /// The Student selected in the collection of the listbox
     /// </summary>
@@ -48,7 +53,7 @@ public partial class MainViewModel : ObservableObject
                 }
             }
 
-            selectedStudent= value;
+            selectedStudent = value;
 
             foreach (var student in Students)
             {
@@ -57,9 +62,6 @@ public partial class MainViewModel : ObservableObject
         }
 
     }
-
-    [ObservableProperty]
-    private ObservableCollection<Student> students = new();
 
     [ObservableProperty]
     private bool addNewStudentPopupIsOpen = false;

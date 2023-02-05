@@ -6,6 +6,12 @@ using Avalonia.Threading;
 using StudentsList.ViewModels;
 using System;
 
+using CommunityToolkit.Mvvm.Collections;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Linq;
+using System.Threading.Tasks;
+
 namespace StudentsList.Views;
 
 public partial class MainWindow : Window 

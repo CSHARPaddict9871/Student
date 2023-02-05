@@ -169,12 +169,14 @@ public partial class AnimatedPopup : ContentControl
         get => _animateOpacity;
         set => SetAndRaise(AnimateOpacityProperty, ref _animateOpacity, value);
     }
-    
+
     #endregion
-    
+
     #region Underlay Opacity
-    
-    private double _underlayOpacity = 0.2;
+
+    //private double _underlayOpacity = 0.2;
+
+    private double _underlayOpacity = 0.5;
 
     public static readonly DirectProperty<AnimatedPopup, double> UnderlayOpacityProperty = AvaloniaProperty.RegisterDirect<AnimatedPopup, double>(
         "UnderlayOpacity", o => o.UnderlayOpacity, (o, v) => o.UnderlayOpacity = v);
@@ -258,13 +260,18 @@ public partial class AnimatedPopup : ContentControl
     }
 
     #endregion
-    
+
     #region Private Methods
 
     /// <summary>
     /// Updates the animation desired size based on the current visuals desired size
     /// </summary>
-    private void UpdateDesiredSize() => mDesiredSize = DesiredSize - Margin;   
+    //private void UpdateDesiredSize() => mDesiredSize = DesiredSize - Margin;
+
+    private void UpdateDesiredSize()
+    {
+        mDesiredSize = DesiredSize - Margin;
+    }
 
     /// <summary>
     /// Calculate and start any new required animations
