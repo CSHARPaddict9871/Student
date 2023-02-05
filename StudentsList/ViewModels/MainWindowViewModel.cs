@@ -15,7 +15,7 @@ public partial class MainViewModel : ObservableObject {
     private string descriptionName = string.Empty;
     public string DescriptionName { get; set; }
     
-    
+    // The Student selected in the collection
     [ObservableProperty]
     private Student selectedStudent;
     
