@@ -40,38 +40,53 @@ public partial class MainViewModel : ObservableObject
 
         set
         {
-
-
             if (selectedStudent != null)
             {
-                var t = new ObservableCollection<Student>();
-
                 foreach (var student in Students)
                 {
-                    if (student == selectedStudent)
-                        student.ShowDelete = false;
-
-                    t.Add(student);
+                    if (student.ShowDelete == true) student.ShowDelete = false;
                 }
-
-                Students = t;
             }
 
-            selectedStudent = value;
-
-            var temp = new ObservableCollection<Student>();
+            selectedStudent= value;
 
             foreach (var student in Students)
             {
-                if (student == selectedStudent)
-                    student.ShowDelete = true;
-
-                temp.Add(student);
+                if (selectedStudent == student) student.ShowDelete = true;
             }
-
-            Students = temp;
-
         }
+
+
+        //    if (selectedStudent != null)
+        //    {
+        //        var t = new ObservableCollection<Student>();
+
+        //        foreach (var student in Students)
+        //        {
+        //            if (student == selectedStudent)
+        //                student.ShowDelete = false;
+
+        //            t.Add(student);
+        //        }
+
+        //        Students = t;
+        //    }
+
+        //    selectedStudent = value;
+
+        //    var temp = new ObservableCollection<Student>();
+
+        //    foreach (var student in Students)
+        //    {
+        //        if (student == selectedStudent)
+        //            student.ShowDelete = true;
+
+        //        temp.Add(student);
+        //    }
+
+        //    Students = temp;
+
+        //}
     }
 
     [ObservableProperty]
@@ -106,9 +121,15 @@ public partial class MainViewModel : ObservableObject
     // Remove Student from the TextBox
 
     [RelayCommand]
-    public void RemoveButton()
-    {  
-        // Now I am going to get this working... I will commit what I have.  Maybe you want to put a button under the student list to add a new student... we can add first and last name in the right hand box
+    public void RemoveStudent(Student student)
+    {
+        Students.Remove(student);
+    }
+
+    [RelayCommand]
+    public void AddNewStudent()
+    {
+
     }
 
     #endregion
