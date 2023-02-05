@@ -17,7 +17,7 @@ First Project in C# w/ MrPid
 
 ```
 git clone https://github.com/CSHARPaddict9871/Student.git
-cd password-generator/ 
+cd StudentsList/ 
 ```
 
 ## Licence
