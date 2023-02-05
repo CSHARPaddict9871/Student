@@ -16,7 +16,7 @@ First Project in C# w/ MrPid
 **Compiling from source**
 
 ```
-git clone https://github.com/CSHARPaddict9871/Students.git
+git clone https://github.com/CSHARPaddict9871/Student.git
 cd password-generator/ 
 ```
 
