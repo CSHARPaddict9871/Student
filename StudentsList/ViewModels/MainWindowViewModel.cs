@@ -107,8 +107,8 @@ public partial class MainViewModel : ObservableObject
 
     [RelayCommand]
     public void RemoveButton()
-    {
-        //Students.Remove(new Student() { FirstName = "John", LastName = "Doe" });
+    {  
+        // Now I am going to get this working... I will commit what I have.  Maybe you want to put a button under the student list to add a new student... we can add first and last name in the right hand box
     }
 
     #endregion
