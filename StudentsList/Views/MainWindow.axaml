@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="StudentsList.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
+        Icon="/Assets/Images/students-logo.ico"
         Width="900"
         Height="600"
-        CanResize="False"
+        CanResize="False" 
         ExtendClientAreaChromeHints="NoChrome"
         Title="StudentsList">
+    
+    <!-- ExtendClientAreaChromeHints : Remove controls from the window for the user: Hide, Maximize, Close  // Need to recreate the Controls Button-->
+    <!-- CanResize : Allows to block the resizing that avoids the problems of displays  -->
+
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -18,17 +22,39 @@
         <vm:MainViewModel/>
     </Design.DataContext>
     
-    <Grid ColumnDefinitions="180, *">
-        <Border Grid.Column="0" Width="180" Height="600" Background="#822D2D" Margin="0,0,0,0">
-            <TextBlock Text="{Binding TitleName}" Foreground="white" TextAlignment="Center" FontFamily="Montserrat" FontWeight="700" FontSize="13" Margin="0, 10, 0, 0"/>
+    <Grid ColumnDefinitions="270, *">
+        <Border Grid.Column="0" Width="270" Height="600" Background="#822D2D" Margin="0,0,0,0">
         </Border>
-
+        
+        <Grid RowDefinitions="Auto, *">
+            <Grid Row="0">
+                <Border>
+                    <TextBlock Text="{Binding TitleName}" Foreground="white" TextAlignment="Center" FontFamily="Montserrat" FontWeight="700" FontSize="13" Margin="0, 10, 0, 0"/>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="1">
+                <ItemsControl Items="{Binding Students}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Grid.Row="1" HorizontalAlignment="Left" Text="{Binding FullName}" Margin="10, 10, 0, 0">
+                                    <!-- Actually we cant put a Button in this TextBlock : Invalid type: expected types are 'string' or 'char', actual type is 'Button'.-->
+                                </TextBlock>
+                                <Button Command="{Binding removeButton}"></Button> <!--  Outside the TextBlock  -->
+                            </StackPanel>
+                            
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </Grid>
             
         <Border Grid.Column="1" Width="720" Height="600" Background="#882D2D">
             <TextBlock Text="{Binding DescriptionName}" Foreground="White" TextAlignment="Center" 
-                       FontFamily="Montserrat" FontWeight="700" FontSize="10" Margin="0, 10, 0, 0"/>
+                       FontFamily="Montserrat" FontWeight="700" FontSize="10" Margin="0, 10, 0, 0">
+            </TextBlock>
         </Border>
-        </Grid>
+    </Grid>
 
 
 </Window>

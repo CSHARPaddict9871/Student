@@ -1,14 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace StudentsList.DataModels {
+﻿namespace StudentsList.DataModels {
     public class Student {
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
         
+        private string firstName;
+
+        public string FirstName
+        {
+
+            get { return firstName; }
+            set
+            {
+                firstName = value;
+                FullName = firstName + LastName;
+            }
+        }
+
+        private string lastName;
+
+        public string LastName {
+            get { return lastName; }
+            set {
+                lastName = value;
+                FullName = FirstName + lastName;
+            }
 
 
+
+
+        }
+
+        public string FullName { get; set; }
+
+        }
     }
-}
