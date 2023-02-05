@@ -9,8 +9,10 @@
     </Design.PreviewWith>
 
     <!-- Label -->
-    <Style Selector="Label">
-        <Setter Property="Foreground" Value="Black"></Setter>
-    </Style>
+    <Style Selector="TextBlock">
+        <Setter Property="FontFamily" Value="Montserrat"></Setter>
+		<Setter Property="FontSize" Value="20"></Setter>
+
+	</Style>
     
 </Styles>

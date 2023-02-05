@@ -56,41 +56,13 @@ public partial class MainViewModel : ObservableObject
             }
         }
 
-
-        //    if (selectedStudent != null)
-        //    {
-        //        var t = new ObservableCollection<Student>();
-
-        //        foreach (var student in Students)
-        //        {
-        //            if (student == selectedStudent)
-        //                student.ShowDelete = false;
-
-        //            t.Add(student);
-        //        }
-
-        //        Students = t;
-        //    }
-
-        //    selectedStudent = value;
-
-        //    var temp = new ObservableCollection<Student>();
-
-        //    foreach (var student in Students)
-        //    {
-        //        if (student == selectedStudent)
-        //            student.ShowDelete = true;
-
-        //        temp.Add(student);
-        //    }
-
-        //    Students = temp;
-
-        //}
     }
 
     [ObservableProperty]
     private ObservableCollection<Student> students = new();
+
+    [ObservableProperty]
+    private bool addNewStudentPopupIsOpen = false;
 
     #endregion
 
@@ -111,6 +83,8 @@ public partial class MainViewModel : ObservableObject
 
     #region Relay Commands
 
+    
+
     // Add Student to the TextBox
     [RelayCommand]
     public void AddButton()
@@ -127,9 +101,9 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
-    public void AddNewStudent()
+    public void AddNewStudentButtonPressed()
     {
-
+        addNewStudentPopupIsOpen ^= true;
     }
 
     #endregion

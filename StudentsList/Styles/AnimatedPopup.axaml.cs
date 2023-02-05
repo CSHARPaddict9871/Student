@@ -8,7 +8,7 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Threading;
 
-namespace AvaloniaLoudnessMeter;
+namespace StudentsList;
 
 public partial class AnimatedPopup : ContentControl
 {
