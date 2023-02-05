@@ -44,7 +44,7 @@ public partial class MainViewModel : ObservableObject
 
             var temp = new ObservableCollection<Student>();
 
-            foreach(var student in Students)
+            foreach (var student in Students)
             {
                 if (student == selectedStudent)
                     student.ShowDelete = true;
@@ -53,31 +53,12 @@ public partial class MainViewModel : ObservableObject
             }
 
             Students = temp;
-           
+
         }
     }
 
     [ObservableProperty]
     private ObservableCollection<Student> students = new();
-   
-
-    //// Backing member
-    //private ObservableCollection<Student> students = new();
-
-    ///// <summary>
-    ///// The collection of students to display
-    ///// </summary>
-    //public ObservableCollection<Student> Students
-    //{
-    //    get
-    //    {
-    //        return students;
-    //    }
-    //    set
-    //    {
-    //        SetProperty(ref students, value);
-    //    }
-    //}
 
     #endregion
 
@@ -86,7 +67,7 @@ public partial class MainViewModel : ObservableObject
 
     public MainViewModel()
     {
-        Students.Add(new Student() { FirstName = "John", LastName = "MacGyver", ShowDelete = true});
+        Students.Add(new Student() { FirstName = "John", LastName = "MacGyver", ShowDelete = true });
         Students.Add(new Student() { FirstName = "Jason", LastName = "Statham", ShowDelete = false });
         Students.Add(new Student() { FirstName = "Francis", LastName = "Ngannou", ShowDelete = false });
         SetTitle();
