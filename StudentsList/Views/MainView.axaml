@@ -2,7 +2,130 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			         xmlns:vm="using:StudentsList.ViewModels"
+		xmlns:controls="using:StudentsList"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="StudentsList.Views.MainView">
-  Welcome to Avalonia!
+	
+	
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:MainViewModel/>
+	</Design.DataContext>
+
+	<!-- The Main Grid -->
+
+	<Grid x:Name="MainGrid" RowDefinitions="*, Auto">
+
+		<!-- The popup to enter a new student -->
+		<controls:AnimatedPopup
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            AnimationTime="0:0:0.1"
+            Name="AddNewStudentPopup"
+            Open="{Binding AddNewStudentPopupIsOpen}">
+
+			<!--Open="{Binding AddNewStudentPopupIsOpen, Mode=TwoWay}"-->
+
+			<Border Width="100" Height="250" Background="Aqua" ZIndex="10">
+				<!--<TextBlock Foreground="Black" />-->
+			</Border>
+
+
+			<!--<controls:AnimatedPopup
+            Grid.Row="0"
+            Grid.RowSpan="3"
+            AnimationTime="0:0:0.1"
+            Name="ChannelConfigurationPopup"
+            Open="{Binding ChannelConfigurationListIsOpen, Mode=TwoWay}">-->
+
+		</controls:AnimatedPopup>
+
+		<!-- The Top Row of the Main Grid ... TODO:  Need better names for this-->
+		<Grid Grid.Row="0" ColumnDefinitions="270, *">
+
+			<!-- Student List Stuff... Title, List of Students and Add New Student button 
+			     ... TODO:  Need better names for this-->
+			<Grid Grid.Column="0" RowDefinitions="Auto, *">
+
+				<!-- The Title for the Student List Stuff -->
+				<Grid Row="0">
+					<Border Background="#822D2D">
+						<TextBlock Text="{Binding TitleName}"
+								   Foreground="White"
+								   HorizontalAlignment="Center"
+								   FontWeight="700"
+								   Margin="0, 10, 0, 0"/>
+					</Border>
+				</Grid>
+
+				<!-- The List of Students -->
+				<Grid Grid.Row="1">
+					<ListBox x:Name="studentListbox"
+							 Items="{Binding Students}"
+							 Background="#822D2D"
+							 SelectedItem="{Binding SelectedStudent}">
+
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+
+								<!-- The Container for the Student's name and the button to delete 
+							     a student that only appears if the student is selected -->
+								<Grid ColumnDefinitions="*,Auto">
+
+									<!-- The Student's Name -->
+									<TextBlock Grid.Column="0"
+											   Text="{Binding FullName}"
+											   Margin="10, 10, 0, 0"
+											   Foreground="Black" />
+
+									<!-- Button to delete a student (hidden if not sellected) -->
+									<Button Grid.Column="1"
+											Background="Red"
+											Content="X"
+											Padding="3"
+											FontSize="15"
+											IsVisible="{Binding ShowDelete}"
+											Foreground="White"
+											Command="{Binding #studentListbox.DataContext.RemoveStudentCommand}"
+											CommandParameter="{Binding}" />
+								</Grid>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</Grid>
+			</Grid>
+
+			<!-- The Right Side of the Top Row in the MainGrid... TODO:  Need better names for this-->
+			<Border Grid.Column="1"  Background="#882D2D">
+				<TextBlock Text="{Binding DescriptionName}"
+						   Foreground="White"
+						   HorizontalAlignment="Center"
+						   FontWeight="700"
+						   Margin="0, 10, 0, 0" />
+			</Border>
+		</Grid>
+
+		<!-- The Footer for the MainGrid-->
+		<Grid Grid.Row="1" Background="LightGray">
+			<Button Margin="20,10,20,10"
+					Name="AddNewStudentButton"
+					Padding="10"
+					FontSize="20"
+					Background="Green"
+					Foreground="Wheat"
+					Command="{Binding #AddNewStudentPopup.BeginOpen}"
+					
+					Content="Add New Student" />
+
+			<!--Command="{Binding AddNewStudentButtonPressedCommand}"-->
+
+
+		</Grid>
+	</Grid>
+
+
+
+
 </UserControl>
