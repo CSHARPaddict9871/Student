@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Avalonia.Data;
+using Avalonia.Themes.Default;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DynamicData;
@@ -105,9 +106,11 @@ public partial class MainViewModel : ObservableObject
     /// </summary>
     public MainViewModel()
     {
+        // Read the Data and convert it to a Student ViewModel
+        // with the ShowDelete added to the Student model
         Students = new DummyData().ReturnDummyData();
 
-        
+        // Set the Title and Description Text
         SetTitle();
         SetDescription();
     }
@@ -208,5 +211,4 @@ public partial class MainViewModel : ObservableObject
     }
 
     #endregion
-
 }
