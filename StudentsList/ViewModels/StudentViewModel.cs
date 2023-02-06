@@ -1,8 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace StudentsList.DataModels
+namespace StudentsList.ViewModels
 {
-    public partial class Student
+    public partial class StudentViewModel : ObservableObject
     {
         // Backing Member
         private string firstName;
@@ -19,7 +24,7 @@ namespace StudentsList.DataModels
                 // Set the first name to the new value
                 firstName = value;
                 // Update the Full name property
-                FullName = string.Format("{0} {1}", firstName ,LastName);
+                FullName = string.Format("{0} {1}", firstName, LastName);
             }
         }
 
@@ -47,6 +52,8 @@ namespace StudentsList.DataModels
         /// </summary>
         public string FullName { get; set; }
 
-       
+        [ObservableProperty]
+        private bool showDelete;
+
     }
 }

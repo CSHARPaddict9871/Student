@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DynamicData;
 using StudentsList.DataModels;
+using StudentsList.Services;
 
 namespace StudentsList.ViewModels;
 
@@ -35,13 +36,13 @@ public partial class MainViewModel : ObservableObject
     /// The list of students to display
     /// </summary>
     [ObservableProperty]
-    private ObservableCollection<Student> students = new();
+    private ObservableCollection<StudentViewModel> students = new();
 
     /// <summary>
     /// The Student selected in the collection of the listbox
     /// </summary>
-    private Student selectedStudent;
-    public Student SelectedStudent
+    private StudentViewModel selectedStudent;
+    public StudentViewModel SelectedStudent
     {
         get { return selectedStudent; }
 
@@ -104,9 +105,9 @@ public partial class MainViewModel : ObservableObject
     /// </summary>
     public MainViewModel()
     {
-        Students.Add(new Student() { FirstName = "John", LastName = "MacGyver", ShowDelete = false });
-        Students.Add(new Student() { FirstName = "Jason", LastName = "Statham", ShowDelete = false });
-        Students.Add(new Student() { FirstName = "Francis", LastName = "Ngannou", ShowDelete = false });
+        Students = new DummyData().ReturnDummyData();
+
+        
         SetTitle();
         SetDescription();
     }
@@ -143,7 +144,7 @@ public partial class MainViewModel : ObservableObject
         // If the first and last name are not blank, add the student to Students list
         if (FirstName != string.Empty && LastName != string.Empty)
         {
-            Students.Add(new Student() { FirstName = FirstName, LastName = LastName, ShowDelete = false });
+            Students.Add(new StudentViewModel() { FirstName = FirstName, LastName = LastName, ShowDelete = false });
         }
 
         // Set the First and Last name properties to blank
@@ -171,7 +172,7 @@ public partial class MainViewModel : ObservableObject
     /// </summary>
     /// <param name="student">The Student to Remove</param>
     [RelayCommand]
-    public void RemoveStudent(Student student)
+    public void RemoveStudent(StudentViewModel student)
     {
         Students.Remove(student);
     }
