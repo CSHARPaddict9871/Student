@@ -3,7 +3,7 @@
 </p>
 
 
-# Student [![GitHub Latest Release)](https://img.shields.io/github/v/release/Antyss77/password-generator?logo=github)](https://github.com/Antyss77/password-generator/releases)   <img alt="GitHub issues" src="https://img.shields.io/github/issues/Antyss77/password-generator"> <img alt="Discord" src="https://img.shields.io/discord/741862512307339264"> 
+# Student [![GitHub Latest Release)](https://img.shields.io/github/v/release/CSHARPaddict9871/Student?logo=github)](https://github.com/CSHARPaddict9871/Student/releases)   <img alt="GitHub issues" src="https://img.shields.io/github/issues/CSHARPaddict9871/Student"> <img alt="Discord" src="https://img.shields.io/discord/741862512307339264"> 
 
 First Project in C# w/ MrPid 
 
