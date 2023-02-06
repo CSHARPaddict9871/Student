@@ -88,26 +88,29 @@
 									 Width="270"
 									 Margin="0,0,0,12"
 									 Text="{Binding FirstName}" 
-									  Watermark="First Name"
-									 />
+									 Watermark="First Name"/>
 
 							<!-- Last Name Data Entry Box -->
 							<TextBox HorizontalAlignment="Left"
 									 Width="270"
 									 Text="{Binding LastName}" 
-									 Watermark="Last Name"
-									 />
+									 Watermark="Last Name"/>
+							
 						</StackPanel>
 					</Grid>
 
+					<!-- The textblock and slider for setting the grade value for a new employee -->
 					<Grid Grid.Row="2">
 
+						<!-- Vertical StackPanel for the slider and it's value -->
 						<StackPanel Orientation="Vertical">
 							<TextBlock Text="{Binding ElementName=sliderValue, Path=Value}" 
 									   HorizontalAlignment="Center"
 									   />
 							<Slider Maximum="5" Width="250"
-									Name="sliderValue"/>
+									Name="sliderValue" TickFrequency="5"
+									TickPlacement="BottomRight"
+									/>
 						</StackPanel>
 						
 					</Grid>
