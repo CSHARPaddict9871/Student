@@ -18,7 +18,8 @@
 
 	<Grid x:Name="MainGrid" RowDefinitions="*, Auto">
 
-		<!-- The popup to enter a new student -->
+		<!-- The popup to enter a new student 
+		     ... TODO: This is not currently used -->
 		<controls:AnimatedPopup
             Grid.Row="0"
             Grid.RowSpan="2"
@@ -28,10 +29,12 @@
             Open="{Binding AddNewStudentPopupIsOpen, Mode=TwoWay}"
 			AnimationTime="0:0:0.1">
 
-			<!--Open="{Binding AddNewStudentPopupIsOpen, Mode=TwoWay}"-->
+			<!-- The Content To Display in the Popup -->
 
 			<Label Content="Label" Height="400" Width="400" Background="Red"></Label>
 
+
+			<!--Open="{Binding AddNewStudentPopupIsOpen, Mode=TwoWay}"-->
 		</controls:AnimatedPopup>
 
 		<!-- The Top Row of the Main Grid ... TODO:  Need better names for this-->
@@ -103,9 +106,6 @@
 					Background="LightBlue" Margin="35,20"
 					IsVisible="{Binding AddStudentOverlayIsVisible}">
 
-				<!--IsVisible="{Binding AddStudentOverlayIsVisible}">-->
-
-
 				<Grid RowDefinitions="auto, auto, *">
 
 					<!-- Title Row -->
@@ -131,8 +131,7 @@
 									Command="{Binding CloseAddNewStudentCommand}">
 								<TextBlock Text="X" HorizontalAlignment="Center"
 										   VerticalAlignment="Center"
-										   FontSize="30"
-										   />
+										   FontSize="30"/>
 							</Button>
 						</Grid>
 					</Grid>
@@ -144,12 +143,14 @@
 						<!-- the TextBlocks for the data entry -->
 						<StackPanel Grid.Column="0"
 							Orientation="Vertical">
-							
+
+							<!-- First Name Textbox Entry -->
 							<TextBlock HorizontalAlignment="Right" 
 									   Text="Enter First Name:  "
 									   Margin="0,0,0,20">								
 							</TextBlock>
 
+							<!-- Last Name Textbox Entry -->
 							<TextBlock HorizontalAlignment="Right"
 									   Text="Enter Last Name:  ">
 							</TextBlock>
@@ -162,8 +163,8 @@
 
 							<!-- First Name Data Entry Box -->
 							<TextBox HorizontalAlignment="Left"
-									   Width="270"
-									   Margin="0,0,0,12"
+									 Width="270"
+								     Margin="0,0,0,12"
 									 Text="{Binding FirstName}">
 							</TextBox>
 
@@ -180,11 +181,8 @@
 							Background="Green" HorizontalAlignment="Center"
 							VerticalAlignment="Center"
 							Command="{Binding SaveStudentCommand}"/>
-
 				</Grid>
 			</Border>
-
-
 		</Grid>
 
 		<!-- The Footer for the MainGrid-->
@@ -214,12 +212,6 @@
 					IsVisible="True"/>
 
 			<!--Command="{Binding AddNewStudentButtonPressedCommand}"-->
-
-
 		</Grid>
 	</Grid>
-
-
-
-
 </UserControl>
