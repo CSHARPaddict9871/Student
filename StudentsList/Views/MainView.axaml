@@ -18,6 +18,93 @@
 
 	<Grid x:Name="MainGrid" RowDefinitions="*, Auto">
 
+		<!-- The Overlay to Enter a new student -->
+		<Border Grid.Column="0" Grid.RowSpan="2" ZIndex="1"
+				Background="Transparent" Opacity="0.97"
+				IsVisible="{Binding AddStudentOverlayIsVisible}">
+			
+			<!-- Overlay for entering a new student... not always visible -->
+			<Border	Background="LightBlue" Margin="50,50">
+
+				<!-- The Main Overlay grid -->
+				<Grid RowDefinitions="auto, auto, *">
+
+					<!-- Title Row -->
+					<Grid Grid.Row="0" >
+						<Grid ColumnDefinitions="*,Auto">
+
+							<!-- The Title and the Underline -->
+							<StackPanel Grid.Column="0" Orientation="Vertical"
+										Grid.ColumnSpan="2">
+								<TextBlock  HorizontalAlignment="Center"
+										   Margin="0,10,0,2" Text="Add New Student"
+										   FontSize="25"/>
+
+								<Border Background="Black"
+										Height="2" Width="200" />
+							</StackPanel>
+
+							<!-- The X button to close the window -->
+							<Button Grid.Column="1" Width="40" Height="40" Background="Red"
+								HorizontalAlignment="Right" CornerRadius="2"
+								BorderBrush="Black" BorderThickness="2"
+								Margin="5,5"
+									Command="{Binding CloseAddNewStudentCommand}">
+								<TextBlock Text="X" HorizontalAlignment="Center"
+										   VerticalAlignment="Center"
+										   FontSize="30"/>
+							</Button>
+						</Grid>
+					</Grid>
+
+					<!-- The First and Last Name entry -->
+					<Grid Grid.Row="1" ColumnDefinitions="Auto, *"
+						  Margin="5,100,5,30" HorizontalAlignment="Center"
+					  >
+
+						<!-- the TextBlocks for the data entry -->
+						<StackPanel Grid.Column="0"
+							Orientation="Vertical">
+
+							<!-- First Name Textbox Entry -->
+							<TextBlock HorizontalAlignment="Right"
+									   Text="Enter First Name:  "
+									   Margin="0,0,0,20">
+							</TextBlock>
+
+							<!-- Last Name Textbox Entry -->
+							<TextBlock HorizontalAlignment="Right"
+									   Text="Enter Last Name:  ">
+							</TextBlock>
+						</StackPanel>
+
+						<!-- The Data entry Textboxes -->
+						<StackPanel Grid.Column="1"
+							Orientation="Vertical">
+
+							<!-- First Name Data Entry Box -->
+							<TextBox HorizontalAlignment="Left"
+									 Width="270"
+									 Margin="0,0,0,12"
+									 Text="{Binding FirstName}" />
+
+							<!-- Last Name Data Entry Box -->
+							<TextBox HorizontalAlignment="Left"
+									 Width="270"
+									 Text="{Binding LastName}" />
+						</StackPanel>
+					</Grid>
+
+					<!-- Save Button -->
+					<Button Grid.Row="2" Content="Save" FontSize="30"
+							Background="Green" HorizontalAlignment="Center"
+							VerticalAlignment="Center"
+							Command="{Binding SaveStudentCommand}"/>
+				</Grid>
+			</Border>
+		</Border>
+		
+
 		<!-- The popup to enter a new student 
 		     ... TODO: This is not currently used -->
 		<controls:AnimatedPopup
@@ -31,8 +118,7 @@
 
 			<!-- The Content To Display in the Popup -->
 
-			<Label Content="Label" Height="400" Width="400" Background="Red"></Label>
-
+			<Label Content="Label" Height="400" Width="400" Background="Red" />
 
 			<!--Open="{Binding AddNewStudentPopupIsOpen, Mode=TwoWay}"-->
 		</controls:AnimatedPopup>
@@ -101,88 +187,7 @@
 						   Margin="0, 10, 0, 0" />
 			</Border>
 
-			<!-- Overlay for entering a new student... not always visible -->
-			<Border Grid.Column="1" ZIndex="1"
-					Background="LightBlue" Margin="35,20"
-					IsVisible="{Binding AddStudentOverlayIsVisible}">
-
-				<Grid RowDefinitions="auto, auto, *">
-
-					<!-- Title Row -->
-					<Grid Grid.Row="0" >
-						<Grid ColumnDefinitions="*,Auto">
-
-							<!-- The Title and the Underline -->
-							<StackPanel Grid.Column="0" Orientation="Vertical"
-										Grid.ColumnSpan="2">
-								<TextBlock  HorizontalAlignment="Center"
-					                       Margin="0,10,0,2" Text="Add New Student"
-				   	                       FontSize="25"/>
-
-								<Border Background="Black"
-										Height="2" Width="200" />
-							</StackPanel>
-
-							<!-- The X button to close the window -->
-							<Button Grid.Column="1" Width="40" Height="40" Background="Red"
-								HorizontalAlignment="Right" CornerRadius="5"
-								BorderBrush="Black" BorderThickness="2"
-								Margin="5,5"
-									Command="{Binding CloseAddNewStudentCommand}">
-								<TextBlock Text="X" HorizontalAlignment="Center"
-										   VerticalAlignment="Center"
-										   FontSize="30"/>
-							</Button>
-						</Grid>
-					</Grid>
-
-					<!-- The First and Last Name entry -->
-					<Grid Grid.Row="1" ColumnDefinitions="Auto, *"
-						  Margin="5,50,5,30">
-
-						<!-- the TextBlocks for the data entry -->
-						<StackPanel Grid.Column="0"
-							Orientation="Vertical">
-
-							<!-- First Name Textbox Entry -->
-							<TextBlock HorizontalAlignment="Right" 
-									   Text="Enter First Name:  "
-									   Margin="0,0,0,20">								
-							</TextBlock>
-
-							<!-- Last Name Textbox Entry -->
-							<TextBlock HorizontalAlignment="Right"
-									   Text="Enter Last Name:  ">
-							</TextBlock>
-									  
-						</StackPanel>
-
-						<!-- The Data entry Textboxes -->
-						<StackPanel Grid.Column="1"
-							Orientation="Vertical">
-
-							<!-- First Name Data Entry Box -->
-							<TextBox HorizontalAlignment="Left"
-									 Width="270"
-								     Margin="0,0,0,12"
-									 Text="{Binding FirstName}">
-							</TextBox>
-
-							<!-- Last Name Data Entry Box -->
-							<TextBox HorizontalAlignment="Left"
-									 Width="270"
-									 Text="{Binding LastName}">
-							</TextBox>
-						</StackPanel>
-					</Grid>
-
-					<!-- Save Button -->
-					<Button Grid.Row="2" Content="Save" FontSize="30"
-							Background="Green" HorizontalAlignment="Center"
-							VerticalAlignment="Center"
-							Command="{Binding SaveStudentCommand}"/>
-				</Grid>
-			</Border>
+			
 		</Grid>
 
 		<!-- The Footer for the MainGrid-->
