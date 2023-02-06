@@ -52,6 +52,20 @@ namespace StudentsList.ViewModels
         /// </summary>
         public string FullName { get; set; }
 
+        /// <summary>
+        /// The students grade between 0 and 5
+        /// </summary>
+        private double grade = 9.9;
+        public double Grade
+        {
+            get { return grade; }
+            set
+            {
+                grade = value;
+            }
+        }
+
+
         [ObservableProperty]
         private bool showDelete;
 

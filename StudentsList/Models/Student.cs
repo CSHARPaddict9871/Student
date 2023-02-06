@@ -42,6 +42,8 @@ namespace StudentsList.DataModels
 
         }
 
+        public double Grade;
+
         /// <summary>
         /// The full name of the student (includes a space in between first and last name
         /// </summary>

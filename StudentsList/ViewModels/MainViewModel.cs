@@ -96,6 +96,8 @@ public partial class MainViewModel : ObservableObject
     /// </summary>
     [ObservableProperty] private bool addStudentOverlayIsVisible = false;
 
+    [ObservableProperty] private double sliderValue = 3.5;
+
     #endregion
 
 
@@ -139,7 +141,7 @@ public partial class MainViewModel : ObservableObject
     }
 
     /// <summary>
-    /// Save the New Student as long and first and last name are not blank
+    /// Save the New Student as long as neither the first or last name is not blank
     /// </summary>
     [RelayCommand]
     public void SaveStudent()
@@ -160,6 +162,7 @@ public partial class MainViewModel : ObservableObject
 
     /// <summary>
     /// The CommunityToolkitMethod that gets ran after the view is loaded and running
+    /// TODO: this doesn't work
     /// </summary>
     /// <returns>Returns a null task ???? TODO: what should this comment be???</returns>
     [RelayCommand]
