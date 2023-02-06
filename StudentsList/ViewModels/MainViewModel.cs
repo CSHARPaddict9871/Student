@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
+using Avalonia.Data;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DynamicData;
@@ -63,10 +65,19 @@ public partial class MainViewModel : ObservableObject
 
     }
 
+    [ObservableProperty] private string firstName = string.Empty;
+
+    [ObservableProperty] private string lastName = string.Empty;
+
     [ObservableProperty]
     private bool addNewStudentPopupIsOpen = false;
 
+    [ObservableProperty] private bool addingNewStudent = false;
+
+    [ObservableProperty] private bool addStudentOverlayIsVisible = false;
+
     #endregion
+
 
 
     #region Default Constructor
@@ -82,10 +93,45 @@ public partial class MainViewModel : ObservableObject
 
     #endregion
 
-
     #region Relay Commands
 
-    
+    [RelayCommand]
+    public void AddStudentButtonPressed()
+    {
+        AddStudentOverlayIsVisible = true;
+    }
+
+    [RelayCommand]
+    public void SaveStudent()
+    {
+        if (FirstName != string.Empty  && LastName != string.Empty) 
+        {
+            Students.Add(new Student() { FirstName = FirstName, LastName = LastName, ShowDelete = false });
+        }
+
+        FirstName = string.Empty;
+        LastName = string.Empty;
+
+        AddStudentOverlayIsVisible= false;
+    }
+
+    /// <summary>
+    /// The CommunityToolkitMethod that gets ran after the view is loaded and running
+    /// </summary>
+    /// <returns>Returns a null task ???? TODO: what should this comment be???</returns>
+    [RelayCommand]
+    public async Task LoadSettingsAsync()
+    {
+        //ValidUsers = new ObservableCollection<UserModel>(await mValidUsersService.GetValidUsersAsync());
+
+        await Task.Delay(500);
+
+    }
+
+
+
+
+
 
     // Add Student to the TextBox
     [RelayCommand]
@@ -108,13 +154,19 @@ public partial class MainViewModel : ObservableObject
         addNewStudentPopupIsOpen ^= true;
     }
 
-    #endregion
+    [RelayCommand]
+    public void CloseAddNewStudent()
+    {
+        AddStudentOverlayIsVisible = false;
+    }
+
+#endregion
 
 
-    #region Private methods
+#region Private methods
 
-    // Define the Title : See Line 28 in MainWindow.axaml
-    private void SetTitle()
+// Define the Title : See Line 28 in MainWindow.axaml
+private void SetTitle()
     {
         TitleName = "Students List";
     }

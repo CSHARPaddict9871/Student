@@ -271,6 +271,8 @@ public partial class AnimatedPopup : ContentControl
     private void UpdateDesiredSize()
     {
         mDesiredSize = DesiredSize - Margin;
+
+        //
     }
 
     /// <summary>

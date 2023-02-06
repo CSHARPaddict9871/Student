@@ -6,13 +6,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="StudentsList.Views.MainWindow"
-        Icon="/Assets/Images/students-logo.ico"
+		Icon="/Assets/Images/students-logo.ico"
         Width="900"
         Height="600"
-        CanResize="False"
-        ExtendClientAreaChromeHints="NoChrome"
-        Title="StudentsList">
+        Title="Students List"
+        x:Class="StudentsList.Views.MainWindow"
+        >
 
 	<!-- ExtendClientAreaChromeHints : Remove controls from the window for the user: Hide, Maximize, Close  // Need to recreate the Controls Button-->
 	<!-- CanResize : Allows to block the resizing that avoids the problems of displays  -->

@@ -17,9 +17,6 @@ namespace StudentsList.Views;
 public partial class MainWindow : Window 
 
 {
-
-
-
     #region Constructors
 
     /// <summary>
@@ -29,12 +26,8 @@ public partial class MainWindow : Window
     public MainWindow() 
     {
         InitializeComponent();
-
-       
     }
 
     #endregion
-
-   
-         
+      
 }

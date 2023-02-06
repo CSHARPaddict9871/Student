@@ -1,6 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Input;
+//using Avalonia.Input;
 using Avalonia.Media;
 using Avalonia.Threading;
 using StudentsList.ViewModels;
@@ -32,6 +32,21 @@ namespace StudentsList.Views
             mMainGrid = this.FindControl<Control>("MainGrid") ?? throw new Exception("Cannot find Main Grid by name");
         }
 
+
+
+        // Overrides the View's OnLoaded event
+        //protected override async void OnLoaded()
+        //{
+        //    if (DataContext != null)
+        //    {
+        //        await((MainViewModel) DataContext).LoadSettingsCommand.ExecuteAsync(null);
+        //    }
+
+
+
+        //    base.OnLoaded();
+        //}
+
         public override void Render(DrawingContext context)
         {
             base.Render(context);
@@ -51,11 +66,12 @@ namespace StudentsList.Views
             });
         }
 
-        private void InputElement_OnPointerPressed(object sender, PointerPressedEventArgs e)
-        {
-            ((MainViewModel)DataContext).AddNewStudentButtonPressedCommand.Execute(null);
-        }
+        //private void InputElement_OnPointerPressed(object sender, PointerPressedEventArgs e)
+        //{
+        //    ((MainViewModel)DataContext).AddNewStudentButtonPressedCommand.Execute(null);
+        //}
 
 
     }
 }
+
