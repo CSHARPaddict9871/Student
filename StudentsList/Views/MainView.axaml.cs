@@ -33,9 +33,10 @@ namespace StudentsList.Views
 
         private double blueRectangleCanvasLeft = 200;
 
+        private double pinkRectangleCanvasLeft = 400;
+
         private double greenRectangleCanvasLeft = 600;
 
-        private double pinkRectangleCanvasLeft = 400;
 
         #endregion
 
@@ -106,7 +107,7 @@ namespace StudentsList.Views
 
                 var leftOffset = left ;
 
-                SelectedRectangle.Margin = new Thickness(left - offset, SelectedRectangleMargin.Top, SelectedRectangleMargin.Right, SelectedRectangleMargin.Bottom);
+                SelectedRectangle.Margin = new Thickness(left - offset, SelectedRectangle.Margin.Top, SelectedRectangle.Margin.Right, SelectedRectangle.Margin.Bottom);
             }
 
         }
