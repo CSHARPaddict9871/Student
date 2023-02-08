@@ -210,7 +210,7 @@ public partial class MainViewModel : ObservableObject
     /// </summary>
     private void SetDescription()
     {
-        DescriptionName = "Go to scholl !!!";
+        DescriptionName = "Go to school !!!";
     }
 
     #endregion
