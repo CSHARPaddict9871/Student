@@ -19,12 +19,23 @@ namespace StudentsList.Views
         private Control mAddNewStudentButton;
         private Control mAddNewStudentPopup;
 
-        protected bool isDragging;
         private Point clickPosition;
-        private Point releasePosition;
-        private TranslateTransform originTT;
 
+        public Thickness RedRectangleMargin { get; set; } = new();
 
+        private bool ButtonPressed = false;
+
+        private Rectangle SelectedRectangle;
+
+        private Thickness SelectedRectangleMargin;
+
+        private double redRectangleCanvasLeft = 0;
+
+        private double blueRectangleCanvasLeft = 200;
+
+        private double greenRectangleCanvasLeft = 600;
+
+        private double pinkRectangleCanvasLeft = 400;
 
         #endregion
 
@@ -43,21 +54,66 @@ namespace StudentsList.Views
 
         private void Canvas_MouseLeftButtonDown(object sender, PointerPressedEventArgs e)
         {
-            var draggableControl = sender as Shape;
-            originTT = draggableControl.RenderTransform as TranslateTransform ?? new TranslateTransform();
-            isDragging = true;
-            clickPosition = e.GetPosition(this);
-            //draggableControl.CapturePointer();
+            ButtonPressed = true;
+
+            clickPosition = e.GetPosition(canvas);
+
+            canvas.PointerMoved += Canvas_PointerMoved;
+
+            SelectedRectangle = sender as Rectangle;
+
+            SelectedRectangleMargin = SelectedRectangle.Margin;
+
+            
+        }
+
+        private void Canvas_PointerMoved(object sender, PointerEventArgs e)
+        {
+
+             
+            if (ButtonPressed)
+            {
+                Point mousePosition = e.GetPosition(canvas);
+
+                var m = mousePosition.X;
+
+                var distance = mousePosition.X - clickPosition.X;
+
+                var left = clickPosition.X + distance;
+
+                //switch (SelectedRectangle)
+                //{
+                //    case 
+                //}
+
+                double offset = 0;
+
+                if (SelectedRectangle.Name == "BlueRectangle")
+                {
+                    offset = 200;
+                }
+
+                if (SelectedRectangle.Name == "PinkRectangle")
+                {
+                    offset = 400;
+                }
+
+                if (SelectedRectangle.Name == "GreenRectangle")
+                {
+                    offset = 600;
+                }
+
+
+                var leftOffset = left ;
+
+                SelectedRectangle.Margin = new Thickness(left - offset, SelectedRectangleMargin.Top, SelectedRectangleMargin.Right, SelectedRectangleMargin.Bottom);
+            }
+
         }
 
         private void Canvas_MouseLeftButtonUp(object sender, PointerReleasedEventArgs e)
         {
-            //isDragging = false;
-            var draggable = sender as Shape;
-            releasePosition = e.GetPosition(this);
-
-            var distance = clickPosition.X - releasePosition.X;
-            //draggable.ReleaseMouseCapture();
+            ButtonPressed = false;
         }
 
 
