@@ -1,5 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Shapes;
+using Avalonia.Input;
 //using Avalonia.Input;
 using Avalonia.Media;
 using Avalonia.Threading;
@@ -17,6 +19,13 @@ namespace StudentsList.Views
         private Control mAddNewStudentButton;
         private Control mAddNewStudentPopup;
 
+        protected bool isDragging;
+        private Point clickPosition;
+        private Point releasePosition;
+        private TranslateTransform originTT;
+
+
+
         #endregion
 
 
@@ -30,6 +39,25 @@ namespace StudentsList.Views
             mAddNewStudentButton = this.FindControl<Control>("AddNewStudentButton") ?? throw new Exception("Cannot find AddNewStudentButton by name");
             mAddNewStudentPopup = this.FindControl<Control>("AddNewStudentPopup") ?? throw new Exception("Cannot find AddNewStudentPopup by name");
             mMainGrid = this.FindControl<Control>("MainGrid") ?? throw new Exception("Cannot find Main Grid by name");
+        }
+
+        private void Canvas_MouseLeftButtonDown(object sender, PointerPressedEventArgs e)
+        {
+            var draggableControl = sender as Shape;
+            originTT = draggableControl.RenderTransform as TranslateTransform ?? new TranslateTransform();
+            isDragging = true;
+            clickPosition = e.GetPosition(this);
+            //draggableControl.CapturePointer();
+        }
+
+        private void Canvas_MouseLeftButtonUp(object sender, PointerReleasedEventArgs e)
+        {
+            //isDragging = false;
+            var draggable = sender as Shape;
+            releasePosition = e.GetPosition(this);
+
+            var distance = clickPosition.X - releasePosition.X;
+            //draggable.ReleaseMouseCapture();
         }
 
 

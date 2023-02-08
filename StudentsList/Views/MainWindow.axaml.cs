@@ -23,11 +23,11 @@ public partial class MainWindow : Window
     /// Default constructor
     /// </summary>
     /// <exception cref="Exception">Throws if named controls cannot be found</exception>
-    public MainWindow() 
+    public MainWindow()
     {
         InitializeComponent();
+
     }
 
     #endregion
-      
 }
